@@ -36,10 +36,16 @@ const AuthForm = () => {
         }
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
+        if (e.key === 'Enter') {
+            handleSubmit(e as unknown as React.FormEvent);
+        }
+    };
+
     return (
         <div className="auth-container">
             <h2>{isLogin ? 'Login' : 'Register'}</h2>
-            <form className="auth-form" onSubmit={handleSubmit}>
+            <form className="auth-form" onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
                 {!isLogin && (
                     <div>
                         <label>Name:</label>
